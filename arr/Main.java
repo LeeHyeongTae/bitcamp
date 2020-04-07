@@ -13,20 +13,18 @@ public class Main {
 					break;
 			case 2: System.out.println("카드 3장 받기"); 
 			for(int i=0; i<3; i++) {
-				System.out.println("카드모양, 카드넘버 입력");
-				service.add(new CardBean(scanner.next(),
-						scanner.nextInt()));				
+				System.out.println("카드무늬, 카드넘버 입력");
+				service.add(new CardBean(scanner.next(), scanner.nextInt()));				
 			}
 			break;
 			case 3: System.out.println("받은 카드 출력");
 			CardBean[] cards = service.getCards();
 			for(int i=0; i<3; i++) {
-				System.out.println(String.format("카드모양 %s 카드넘버%d", cards[i].getKind(), cards[i].getNumber()));
+				System.out.println(String.format("카드무늬 %s 카드넘버%d", cards[i].getKind(), cards[i].getNumber()));
 			}
 			break;
 			}
 		}
-
 	}
 
 }
