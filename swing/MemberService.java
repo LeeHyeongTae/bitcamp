@@ -1,10 +1,11 @@
 package com.jse.swing;
 
-public class MemberServie {
+public class MemberService {
 	//필드에서 선언하고 메서드에서 생성해야 한다.
 	private MemberBean[] members;
-	public MemberServie() {
-		members = new MemberBean[10];
+	private int count;
+	public MemberService() {
+		members = new MemberBean[3];
 	}
 	public void setMemberBean(MemberBean[] members) {
 		this.members = members;
@@ -12,4 +13,9 @@ public class MemberServie {
 	public MemberBean[] getMemeberBean() {
 		return members;
 	}
+	public void add(MemberBean member) {
+		members[count] = member;
+		count++;
+	}
+	
 }
