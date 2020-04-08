@@ -12,11 +12,16 @@ public class Main2 {
 			case 1: 
 				System.out.println("카드 3장 입력");
 				for(int i=0; i<3; i++) {
-				System.out.println(i+1+"카드무늬, 카드숫자 입력");
+				System.out.println("카드 무늬, 카드 숫자 입력");
 				cardService.add(new CardBean2(scanner.next(), scanner.nextInt()));
 				}
 				break;
-			case 2: System.out.println("입력한 카드 출력");break;
+			case 2: System.out.println("입력한 카드 출력");
+					CardBean2[] deck = cardService.getCardBean2();
+					for(int i=0; i<3; i++) {
+					System.out.println(String.format("[카드무늬:%s  숫자:%d]", deck[i].getCardPattern(), deck[i].getCardNumber()));
+					}
+			break;
 			}
 		}
 	}

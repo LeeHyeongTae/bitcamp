@@ -4,6 +4,10 @@ public class CardBean2 {
 	private String cardPattern;
 	private int cardNumber;
 	
+	public CardBean2(String cardPattern, int cardNumber) {
+		this.cardPattern = cardPattern;
+		this.cardNumber = cardNumber;
+	}
 	public void setCardPattern(String cardPattern) {
 		this.cardPattern = cardPattern;
 	}
@@ -16,8 +20,5 @@ public class CardBean2 {
 	public int getCardNumber() {
 		return cardNumber;
 	}
-	public CardBean2(String cardPattern, int cardNumber) {
-		this.cardPattern = cardPattern;
-		this.cardNumber = cardNumber;
-	}
+	
 }
