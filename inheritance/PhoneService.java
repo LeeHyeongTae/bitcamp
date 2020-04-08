@@ -14,6 +14,13 @@ public class PhoneService {
 	public Phone[] getPhones() {
 		return phones;
 	}
+	
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
+	}
 	public void add(Phone phone) {
 		phones[count] = phone;
 		count++;

@@ -28,4 +28,5 @@ public class Phone {
 		this.name = name;
 		this.company = company;
 	}
+	
 }
