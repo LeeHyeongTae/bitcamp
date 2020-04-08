@@ -1,29 +1,32 @@
 package com.jse.inheritance;
 
-import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 public class Engine {
 
 	public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in);
+		
 		PhoneService phoneService = new PhoneService();
 		while(true) {
-			System.out.println("0.종료   1.폰번호 입력  2.폰번호 출력");
-			switch(scanner.nextInt()) {
-			case 0:System.out.println("종료"); return;
-			case 1:
-					System.out.println("폰 번호 입력");
+			System.out.println();
+			switch(JOptionPane.showInputDialog("0.종료   1.집전화 입력  2.폰전화 입력")) {
+			case "0": return;
+			case "1":
+				
 					for(int i=0; i<5; i++) {
-						System.out.println("전화번호, 이름, 제조사 입력");
-						phoneService.add(new Phone(scanner.next(), scanner.next(), scanner.next()));
+						String[] values = JOptionPane.showInputDialog("입력 전화번호, 이름, 제조사").split(",");
+						phoneService.add(new Phone(values[0], values[1], values[2]));
 					}
 					break;
 			
-			case 2:System.out.println("폰 번호 출력");
+			case "2":
+					Phone[] phones = phoneService.getPhones();
+					String message ="";
 					for(int i=0; i<5; i++) {
-						Phone[] phones = phoneService.getPhones();
-						System.out.println(String.format("[%s %s %s]", phones[i].getPhoneNumber(), phones[i].getName(), phones[i].getCompany()));
+						message += String.format("[%s %s %s]\n", 
+								phones[i].getPhoneNumber(), phones[i].getName(), phones[i].getCompany());
 					}
+					JOptionPane.showMessageDialog(null, message);
 					break;
 			}
 		}
