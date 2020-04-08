@@ -5,6 +5,11 @@ public class Phone {
 	private String name;
 	private String company;
 	
+	public Phone(String phoneNumber, String name, String company) {
+		this.phoneNumber = phoneNumber;
+		this.name = name;
+		this.company = company;
+	}
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
@@ -22,11 +27,6 @@ public class Phone {
 	}
 	public String getCompany() {
 		return company;
-	}
-	public Phone(String phoneNumber, String name, String company) {
-		this.phoneNumber = phoneNumber;
-		this.name = name;
-		this.company = company;
 	}
 	
 }

@@ -4,9 +4,10 @@ public class CellPhone extends Phone {
 	private boolean portable;
 	private String move;
 	
-	public CellPhone(String phoneNumber, String name, String company, boolean portable) {
-		super(phoneNumber, name, company); //Phone으로 저장된다.	//boolean이 보이면 If else로 처리해야 한다.
-		setPortable(portable);
+	public CellPhone(String phoneNumber, String name, String company, String move) {
+		super(phoneNumber, name, company);
+		this.move = move;//Phone으로 저장된다.	//boolean이 보이면 If else로 처리해야 한다.
+		setMove(move);
 	}
 	
 	public boolean isPortable() {
@@ -14,11 +15,7 @@ public class CellPhone extends Phone {
 	}
 	
 	public void setPortable(boolean portable) {//출력 시 move를 가져와야 함. portable은 
-		if(portable) {
-			this.move = "휴대가능";
-		}else {
-			this.move = "휴대불능";
-		}
+		this.portable = portable;
 	}
 
 	public String getMove() {
@@ -26,7 +23,12 @@ public class CellPhone extends Phone {
 	}
 
 	public void setMove(String move) {
-		this.move = move;
+		String y = "y";
+		if(y.equals(move)) {
+			this.portable = false;
+		}else {
+			this.portable = true;
+		}
 	}
 	
 	
