@@ -1,18 +1,20 @@
 package com.jse.arr;
-import java.util.Scanner;
+
+import javax.swing.JOptionPane;
+
 public class Main {
 	
 	public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in);
+		
 		CardService service = new CardService();
 		while(true) {
-			System.out.println("0.Exit  1.Go  2.카드 3장 받기  3.받은 카드 출력");
-			switch(scanner.nextInt()) {
-			case 0: return;
-			case 1: System.out.println("Go");
+			switch(JOptionPane.showInputDialog("0.Exit  1.Go  2.카드 3장 받기  3.받은 카드 출력")) {
+			case "0": return;
+			case "1": System.out.println("Go");
 					break;
-			case 2: System.out.println("카드 3장 받기"); 
+			case "2": System.out.println("카드 3장 받기");
 			for(int i=0; i<3; i++) {
+				String[] values = JOptionPane.
 				System.out.println("카드무늬, 카드넘버 입력");
 				service.add(new CardBean(scanner.next(), scanner.nextInt()));				
 			}

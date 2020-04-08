@@ -1,12 +1,12 @@
 package com.jse.inheritance;
 
-public class CelPhone extends Phone {
+public class CellPhone extends Phone {
 	private boolean portable;
 	private String move;
 	
-	public CelPhone(String phoneNumber, String name, String company, boolean portable) {
-		super(phoneNumber, name, company); //Phone으로 저장된다.
-		this.portable = portable;
+	public CellPhone(String phoneNumber, String name, String company, boolean portable) {
+		super(phoneNumber, name, company); //Phone으로 저장된다.	//boolean이 보이면 If else로 처리해야 한다.
+		setPortable(portable);
 	}
 	
 	public boolean isPortable() {
