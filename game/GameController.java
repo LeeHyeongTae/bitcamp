@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 import com.jse.member.Kaup;
 import com.jse.util.Calculator;
 import com.jse.util.Constants;
-import com.jse.game.Member;
+
 
 public class GameController {
 	static String test;

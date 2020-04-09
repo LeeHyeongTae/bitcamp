@@ -1,5 +1,8 @@
 package com.jse.inheritance;
 
+import lombok.Data;
+
+@Data
 public class Phone {
 	private String phoneNumber, name, company;
 	

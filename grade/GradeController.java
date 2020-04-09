@@ -1,36 +1,35 @@
 package com.jse.grade;
-import java.util.Scanner;
 
-import com.jse.member.Member;
-import com.jse.member.MemberService;
+import javax.swing.JOptionPane;
+import com.jse.util.Constants;
 public class GradeController {
 // "[%s : 총점 %d 점, 평균 %d 점,학점 : %s]"
 	public static void main(String[] args) {
-			Scanner scanner = new Scanner(System.in);
-			GradeServiceImpl gradeService = new GradeServiceImpl();
-			MemberService memberService = new MemberService();
+			GradeService gradeService = new GradeServiceImpl();
+			Grade grade = null;
 			while(true) {
-				System.out.println("0.종료  1.성적표입력  2.성적표출력  3.성적등수  4.회원명단 입력  5.회원 나이순 정렬  6.회원명단 출력");
-				switch(scanner.nextInt()) {
-				case 0: System.out.println("종료");return;
-				case 1: System.out.println("성적표 입력");
+				switch(JOptionPane.showInputDialog(Constants.GRADE_MENU)) {
+				case "0": ;return;
+				case "1": //System.out.println("성적표 입력");
 				for(int i=0; i<3; i++) {
-					System.out.println("이름,국어점수, 영어점수, 수학점수 입력");
-					gradeService.add(new Grade(scanner.next(),scanner.nextInt(),
-													scanner.nextInt(),scanner.nextInt()));
+					String[] values =JOptionPane.showInputDialog(Constants.GRADEINPUT).split(",");
+					//System.out.println("이름,국어점수, 영어점수, 수학점수 입력");
+					grade = new Grade();
+					grade.setName(values[0]);
+					grade.setKorean(Integer.parseInt(values[1]));
+					grade.setEnglish(Integer.parseInt(values[2]));
+					grade.setMath(Integer.parseInt(values[3]));
+					gradeService.add(grade);
+					
+//					gradeService.add(new Grade(scanner.next(),scanner.nextInt(),
+//													scanner.nextInt(),scanner.nextInt()));
 				}
 						break;	
-				case 2:// 성적표 출력
-					Grade[] grades = gradeService.getGrades();					
-					for(int i=0; i<3; i++) {
-					System.out.println(String.format("[%s : 총점 %d 점, 평균 %d 점,학점 : %s]", 
-							grades[i].getName(), 
-							grades[i].sumSubject(), 
-							grades[i].avgSubject(), 
-							grades[i].gradeResult()));
-					}
+				case "2":// 성적표 출력
+					JOptionPane.showMessageDialog(null, gradeService.printGrades());
+//					System.out.println(gradeService.printGrades());
 						break;
-					case 3:// 총점 높은 순 1,2,3등으로 이름 출력
+					case "3":// 총점 높은 순 1,2,3등으로 이름 출력
 //						System.out.println("성적 순");
 //						if(grades[0].sumSubject()>grades[1].sumSubject()) {
 //							
@@ -57,15 +56,15 @@ public class GradeController {
 //						}
 						
 					break;
-					case 4: // 회원가입
-						System.out.println("회원 가입");
-						for(int i=0; i<3; i++) {
-							System.out.println("이름,ID,PW,나이를 입력하세요");
-						memberService.add(new Member(scanner.next(),scanner.next(),scanner.next(),scanner.nextInt()));
-						}
-						break;
-					case 5://나이순으로 회원 이름 출력
-						System.out.println("나이순으로 정렬");
+//					case "4": // 회원가입
+//						System.out.println("회원 가입");
+//						for(int i=0; i<3; i++) {
+//							System.out.println("이름,ID,PW,나이를 입력하세요");
+//						memberService.add(new Member(scanner.next(),scanner.next(),scanner.next(),scanner.nextInt()));
+//						}
+//						break;
+//					case "5"://나이순으로 회원 이름 출력
+//						System.out.println("나이순으로 정렬");
 //						if(members[0].getAge()>members[1].getAge()) {
 //							if(members[0].getAge()>members[2].getAge()) {
 //								if(members[1].getAge()>members[2].getAge()) {
@@ -88,16 +87,16 @@ public class GradeController {
 //						}else {
 //							System.out.println(String.format("%s\n %s\n %s\n", 
 //									members[1].getName(), members[2].getName(), members[0].getName()));
+////						}
+//						break;
+//					case "6": //회원 명단 출력
+//						System.out.println("회원 명단");
+//						for(int i=0; i<3; i++) {
+//							Member[] members = memberService.getMemeberBean();
+//							System.out.println(String.format("[%s: ID:%s 나이:%s]", 
+//								members[i].getName(), members[i].getUserid(), members[i].getAge()));
 //						}
-						break;
-					case 6: //회원 명단 출력
-						System.out.println("회원 명단");
-						for(int i=0; i<3; i++) {
-							Member[] members = memberService.getMemeberBean();
-							System.out.println(String.format("[%s: ID:%s 나이:%s]", 
-								members[i].getName(), members[i].getUserid(), members[i].getAge()));
-						}
-						break;
+//						break;
 					}
 				}
 		}

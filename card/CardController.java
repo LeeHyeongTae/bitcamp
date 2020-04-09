@@ -1,30 +1,32 @@
 package com.jse.card;
 
-import java.util.Scanner;
+import javax.swing.JOptionPane;
+
+import com.jse.util.Constants;
 
 public class CardController {
 	
 	public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in);
-		CardService service = new CardService();
+
+		CardServiceImpl cardservice = new CardServiceImpl();
+		Card card = null;
 		while(true) {
-			System.out.println("0.Exit  1.Go  2.카드 3장 받기  3.받은 카드 출력");
-			switch(scanner.nextInt()) {
-			case 0: return;
-			case 1: System.out.println("Go");
-					break;
-			case 2: System.out.println("카드 3장 받기");
+			
+			switch(JOptionPane.showInputDialog(Constants.CARD_MENU)) {
+			case "0": return;
+			case "1": System.out.println("카드 3장 받기");
 			for(int i=0; i<3; i++) {
-				
-				System.out.println("카드무늬, 카드넘버 입력");
-				service.add(new Card(scanner.next(), scanner.nextInt()));				
+				String[] cards = JOptionPane.showInputDialog("카드무늬, 카드넘버 입력").split(",");
+				card = new Card();
+				card.setKind(cards[0]);
+				card.setNumber(Integer.parseInt(cards[1]));
+				cardservice.add(card);
 			}
 			break;
-			case 3: System.out.println("받은 카드 출력");
-			Card[] cards = service.getCards();
-			for(int i=0; i<3; i++) {
-				System.out.println(String.format("카드무늬 %s 카드넘버%d", cards[i].getKind(), cards[i].getNumber()));
-			}
+			case "2": 
+				JOptionPane.showMessageDialog(null, cardservice.printCards());
+
+			
 			break;
 			}
 		}

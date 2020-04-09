@@ -6,7 +6,7 @@ public class PhoneController {
 	
 	public static void main(String[] args) {
 		
-		PhoneService phoneService = new PhoneService();
+		PhoneServiceImpl phoneService = new PhoneServiceImpl();
 		String message ="";
 		while(true) {
 			switch(JOptionPane.showInputDialog(Constants.MENU)) {
