@@ -8,10 +8,10 @@ public class PhoneService {
 	private int count;
 	
 	public PhoneService() {
-		galaxyNote = new GalaxyNote[5];
-		iphone = new Iphone[5];
-		cellphones = new CellPhone[5];
-		phones = new Phone[5];
+		galaxyNote = new GalaxyNote[3];
+		iphone = new Iphone[3];
+		cellphones = new CellPhone[3];
+		phones = new Phone[3];
 		count = 0;
 		}
 	public void add(Phone phone) {

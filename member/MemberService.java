@@ -1,19 +1,19 @@
-package com.jse.swing;
+package com.jse.member;
 
 public class MemberService {
 	//필드에서 선언하고 메서드에서 생성해야 한다.
-	private MemberBean[] members;
+	private Member[] members;
 	private int count;
 	public MemberService() {
-		members = new MemberBean[3];
+		members = new Member[3];
 	}
-	public void setMemberBean(MemberBean[] members) {
+	public void setMemberBean(Member[] members) {
 		this.members = members;
 	}
-	public MemberBean[] getMemeberBean() {
+	public Member[] getMemeberBean() {
 		return members;
 	}
-	public void add(MemberBean member) {
+	public void add(Member member) {
 		members[count] = member;
 		count++;
 	}

@@ -1,9 +1,15 @@
-package com.jse.app;
+package com.jse.game;
 import java.util.Random;
 import java.util.Scanner;
 
+import javax.swing.JOptionPane;
 
-public class Engine {
+import com.jse.member.Kaup;
+import com.jse.util.Calculator;
+import com.jse.util.Constants;
+import com.jse.game.Member;
+
+public class GameController {
 	static String test;
 	public static void main(String[] args) {//args 외부에서 투입되는 것 파라미터지만 로컬변수.
 
@@ -17,24 +23,17 @@ public class Engine {
 		Kaup kaup = null;
 		//인스턴트를 만들었다. instantiation.
 		while(true) {//모든 서버는 이 위에서 돌아간다.
-			System.out.println("0.종료\n"
-					+ "1.회원가입\n"
-					+ "2.로그인\n"
-					+ "3.계산기\n"
-					+ "4.주사위 홀짝 맞추기\n"
-					+ "5.가위바위보\n"
-					+ "6.Up and Down Game\n"
-					+ "7.카우푸 계산\n");
-			switch(scanner.nextInt()) {
-			case 0: System.out.println("종료"); 
+			
+			switch(JOptionPane.showInputDialog(Constants.CARD2_MENU)) {
+			case "0": System.out.println("종료"); 
 					return;
-			case 1: 
+			case "1": 
 					System.out.println("회원가입");
 					System.out.println("ID 입력");
 					member.setId(scanner.next());
 					break;
 					
-			case 2: 
+			case "2": 
 					System.out.println("로그인");
 					System.out.println("ID 입력");
 					System.out.println("로그인된 아이디 " + member.getId());
@@ -44,7 +43,7 @@ public class Engine {
 						System.out.println("로그인 실패");
 					}
 					break;
-			case 3: 
+			case "3": 
 				calculator = new Calculator();
 					System.out.println("계산기");
 					System.out.println("첫 번째 수 입력");
@@ -53,7 +52,7 @@ public class Engine {
 					calculator.setNum2(scanner.nextInt());
 					System.out.println("두수의 합: "+calculator.calc());
 					break;
-			case 4:
+			case "4":
 				dicegame = new Dice();
 					System.out.println("주사위 홀짝 맞추기 게임");
 					System.out.println("기대하는 홀/짝 값을 입력해주세요.");
@@ -65,7 +64,7 @@ public class Engine {
 					dicegame.setRandomNum(dice);
 					System.out.println(String.format("결과: %s ", dicegame.switchDice()));
 					break;
-			case 5: 
+			case "5": 
 				 rpsGame = new RPS();
 					System.out.println("가위(1), 바위(2), 보(3) 을 입력하세요.");
 					int play = scanner.nextInt();
@@ -78,7 +77,7 @@ public class Engine {
 					rpsGame.setCom(random.nextInt(3)+1);
 					System.out.println("결과는\n" + rpsGame.game());
 					break;
-			case 6:
+			case "6":
 				upDown = new Service();
 					System.out.println("##맞춰보자 업 아니면 다운 !##\n "
 							+ "~컴퓨터가 생각하는 숫자를 맞춰보세요~\n"
@@ -93,7 +92,7 @@ public class Engine {
 					System.out.println("결과: "+ upDownresult);
 					
 					break;
-					case 7:
+					case "7":
 					kaup = new Kaup();
 					System.out.println("카우푸지수 계산기");
 					System.out.println("키(cm)를 입력해주세요");

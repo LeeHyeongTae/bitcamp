@@ -1,4 +1,4 @@
-package com.jse.app;
+package com.jse.member;
 //카우프지수 = 체중(g)*10 / 신장(m)2
 //13이하 : 영양실조 13 ~ 15 : 여윔15 ~ 18 : 정상18 ~ 20 : 과체중20이상 : 소아비만
 public class Kaup {

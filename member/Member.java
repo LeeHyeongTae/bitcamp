@@ -1,12 +1,12 @@
-package com.jse.swing;
+package com.jse.member;
 
-public class MemberBean {
+public class Member {
 	private String userid;
 	private String passwd;
 	private String name;
 	private int age;
 	
-	public MemberBean(String setUserid,String setpasswd,String setName,int setAge) {
+	public Member(String setUserid,String setpasswd,String setName,int setAge) {
 		userid = setUserid;
 		passwd = setpasswd;
 		name = setName;

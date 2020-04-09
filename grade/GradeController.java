@@ -1,10 +1,13 @@
-package com.jse.swing;
+package com.jse.grade;
 import java.util.Scanner;
-public class Engine {
+
+import com.jse.member.Member;
+import com.jse.member.MemberService;
+public class GradeController {
 // "[%s : 총점 %d 점, 평균 %d 점,학점 : %s]"
 	public static void main(String[] args) {
 			Scanner scanner = new Scanner(System.in);
-			GradeService gradeService = new GradeService();
+			GradeServiceImpl gradeService = new GradeServiceImpl();
 			MemberService memberService = new MemberService();
 			while(true) {
 				System.out.println("0.종료  1.성적표입력  2.성적표출력  3.성적등수  4.회원명단 입력  5.회원 나이순 정렬  6.회원명단 출력");
@@ -13,12 +16,12 @@ public class Engine {
 				case 1: System.out.println("성적표 입력");
 				for(int i=0; i<3; i++) {
 					System.out.println("이름,국어점수, 영어점수, 수학점수 입력");
-					gradeService.add(new GradeBean(scanner.next(),scanner.nextInt(),
+					gradeService.add(new Grade(scanner.next(),scanner.nextInt(),
 													scanner.nextInt(),scanner.nextInt()));
 				}
 						break;	
 				case 2:// 성적표 출력
-					GradeBean[] grades = gradeService.getGrades();					
+					Grade[] grades = gradeService.getGrades();					
 					for(int i=0; i<3; i++) {
 					System.out.println(String.format("[%s : 총점 %d 점, 평균 %d 점,학점 : %s]", 
 							grades[i].getName(), 
@@ -58,7 +61,7 @@ public class Engine {
 						System.out.println("회원 가입");
 						for(int i=0; i<3; i++) {
 							System.out.println("이름,ID,PW,나이를 입력하세요");
-						memberService.add(new MemberBean(scanner.next(),scanner.next(),scanner.next(),scanner.nextInt()));
+						memberService.add(new Member(scanner.next(),scanner.next(),scanner.next(),scanner.nextInt()));
 						}
 						break;
 					case 5://나이순으로 회원 이름 출력
@@ -90,7 +93,7 @@ public class Engine {
 					case 6: //회원 명단 출력
 						System.out.println("회원 명단");
 						for(int i=0; i<3; i++) {
-							MemberBean[] members = memberService.getMemeberBean();
+							Member[] members = memberService.getMemeberBean();
 							System.out.println(String.format("[%s: ID:%s 나이:%s]", 
 								members[i].getName(), members[i].getUserid(), members[i].getAge()));
 						}
