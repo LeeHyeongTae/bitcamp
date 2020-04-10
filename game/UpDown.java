@@ -1,6 +1,6 @@
 package com.jse.game;
 
-public class Service {
+public class UpDown {
 /*
  * UpAndDownGame(1 ~ 10)
  * 1부터 10 사이의 난수를 맞추는 게임.
