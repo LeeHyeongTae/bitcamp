@@ -5,14 +5,14 @@ public class MemberServiceImpl implements MemberService {
 	private Member[] members;
 	private int count;
 	public MemberServiceImpl() {
-		members = new Member[3];
+		members = new Member[5];
 	}
 	@Override
-	public void setMemberBean(Member[] members) {
+	public void setMember(Member[] members) {
 		this.members = members;
 	}
 	@Override
-	public Member[] getMemeberBean() {
+	public Member[] getMemeber() {
 		return members;
 	}
 	@Override
