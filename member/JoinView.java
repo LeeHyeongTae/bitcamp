@@ -76,9 +76,18 @@ public class JoinView extends JFrame implements ActionListener{
 					textFields[2].getText(),
 					textFields[3].getText()).split("/");
 			String[] names = data[0].split(",");
-			//각 스플릿을 통해 담는다.
+			String[] ids = data[1].split(",");
+			String[] pws = data[2].split(",");
+			String[] ssns = data[3].split(",");
+//			memberService.add(new Member(names[0],ids[0],pws[0],ssns[0])); 
+//			memberService.add(new Member(names[1],ids[1],pws[1],ssns[1])); 
+//			memberService.add(new Member(names[2],ids[2],pws[2],ssns[2])); 
+//			memberService.add(new Member(names[3],ids[3],pws[3],ssns[3])); 
+					//각 스플릿을 통해 담는다.
+					
 			Member[] members = memberService.getMemeber();
 				for(int i=0; i<members.length; i++) {
+					memberService.add(new Member(names[i],ids[i],pws[i],ssns[i])); 
 					System.out.println(members[i].toString());
 				}
 					}else if(e.getSource() == cancelButton){
