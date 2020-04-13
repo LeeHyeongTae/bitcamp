@@ -4,6 +4,12 @@ import lombok.Data;
 
 @Data
 public class Phone {
+	public Phone(String phoneNumber2, String name2, String company2) {
+		this.phoneNumber = phoneNumber2;
+		this.name = name2;
+		this.company = company2;
+	}
+
 	private String phoneNumber, name, company;
 		
 }

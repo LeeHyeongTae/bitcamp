@@ -14,7 +14,7 @@ public class PhoneController {
 			case "1":
 					for(int i=0; i<3; i++) {
 					String[] values = JOptionPane.showInputDialog(Constants.PHONE_MENU).split(",");
-					phone = new Phone();
+					phone = new Phone(null, null, null);
 					phone.setPhoneNumber(values[0]);
 					phone.setName(values[1]);
 					phone.setCompany(values[2]);

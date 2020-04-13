@@ -17,6 +17,7 @@ public class JoinView extends JFrame implements ActionListener{
 	JTextField[] textFields;
 	JLabel[] labels;
 	MemberService memberService;
+	
 	public JoinView() {
 		memberService = new MemberServiceImpl();
 	}
@@ -64,25 +65,26 @@ public class JoinView extends JFrame implements ActionListener{
 			textFields[1].setText("hong,you,lee,shin,leedo");
 			textFields[2].setText("1,1,1,1,1");
 			textFields[3].setText("900101-1,910506-2,98515-3,900101-2,020606-3");
-			JOptionPane.showMessageDialog(this,
+				JOptionPane.showMessageDialog(this,
 						String.format("%s / %s / %s / %s", 
-							textFields[0].getText(),
-							textFields[1].getText(),
-							textFields[2].getText(),
-							textFields[3].getText()));
-			String[] data = String.format("%s / %s / %s / %s", 
-					textFields[0].getText(),
-					textFields[1].getText(),
-					textFields[2].getText(),
-					textFields[3].getText()).split("/");
-			String[] names = data[0].split(",");
-			String[] ids = data[1].split(",");
-			String[] pws = data[2].split(",");
-			String[] ssns = data[3].split(",");
-//			memberService.add(new Member(names[0],ids[0],pws[0],ssns[0])); 
-//			memberService.add(new Member(names[1],ids[1],pws[1],ssns[1])); 
-//			memberService.add(new Member(names[2],ids[2],pws[2],ssns[2])); 
-//			memberService.add(new Member(names[3],ids[3],pws[3],ssns[3])); 
+								textFields[0].getText(),
+								textFields[1].getText(),
+								textFields[2].getText(),
+								textFields[3].getText()));
+				String[] data = String.format("%s / %s / %s / %s", 
+						textFields[0].getText(),
+						textFields[1].getText(),
+						textFields[2].getText(),
+						textFields[3].getText()).split("/");
+				String[] names = data[0].split(","); //전처리(preprocessing)
+				String[] ids = data[1].split(",");
+				String[] pws = data[2].split(",");
+				String[] ssns = data[3].split(",");
+//				memberService.add(new Member(names[0],ids[0],pws[0],ssns[0])); 
+//				memberService.add(new Member(names[1],ids[1],pws[1],ssns[1])); 
+//				memberService.add(new Member(names[2],ids[2],pws[2],ssns[2])); 
+//				memberService.add(new Member(names[3],ids[3],pws[3],ssns[3])); 
+				
 					//각 스플릿을 통해 담는다.
 					
 			Member[] members = memberService.getMemeber();
