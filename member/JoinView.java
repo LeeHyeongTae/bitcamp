@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -94,7 +95,15 @@ public class JoinView extends JFrame implements ActionListener{
 			}
 			
 		}else if(e.getSource() == listButton) {
-			
+			Member[] members = memberService.getMemeber();
+			String[] massage = new String[5];
+			String totalmassage;
+			for(int i=0; i<members.length; i++) {
+				massage[i] = members[i].toString();
+			}
+			totalmassage = massage[0]+"\n"+massage[1]+"\n"+massage[2]+"\n"
+					+massage[3]+"\n"+massage[4];
+			textFields[5].setText(totalmassage);
 		}
 		
 	}
