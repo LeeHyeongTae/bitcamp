@@ -5,6 +5,7 @@ public interface MemberService {
 		public Member[] getMemeber();
 		public void add(Member member);
 		public Member login(Member member);
+		public String welcome(String name);
 	}
 
 

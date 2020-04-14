@@ -33,5 +33,10 @@ public class MemberServiceImpl implements MemberService {
 		}
 		return result;
 	}
+	@Override
+	public String welcome(String name) {
+		String welcome = "안녕하세요, "+name+"님, 좋은 하루 되세요~";
+		return welcome;
+	}
 	
 }

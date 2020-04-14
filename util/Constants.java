@@ -13,4 +13,5 @@ public class Constants {
 			"						+ \" 4.회원명단 입력  5.회원 나이순 정렬  6.회원명단 출력";
 	public final static String GRADEINPUT ="이름,국어점수, 영어점수, 수학점수 입력";
 	public final static String CARD_MENU ="0.Exit  1.카드 3장 받기  2.받은 카드 출력";
+
 }

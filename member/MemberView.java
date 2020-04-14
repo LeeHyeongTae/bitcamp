@@ -180,11 +180,9 @@ public class MemberView extends JFrame implements ActionListener{
 			member.setPasswd(passwordText.getText());
 				if(member.getPasswd().equals(memberService.login(member).getPasswd())){
 					JOptionPane.showMessageDialog(this, "로그인 성공");
-					resultText.setText(memberService.login(member).toString());
-					return;
+					resultText.setText(memberService.welcome(memberService.login(member).getName()));
 					}else {
 					JOptionPane.showMessageDialog(this, "로그인 실패");
-					return;
 					}
 				
 			
