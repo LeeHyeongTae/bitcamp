@@ -175,11 +175,9 @@ public class MemberView extends JFrame implements ActionListener{
 			resultText.setText(result);
 		}else if(e.getSource()==loginButton) {
 			JOptionPane.showMessageDialog(this, "login");
-			Member[] members = memberService.getMemeber();
 			Member member = new Member();
 			member.setUserid(useridText.getText());
 			member.setPasswd(passwordText.getText());
-			for(int i=0; i<members.length;) {
 				if(member.getPasswd().equals(memberService.login(member).getPasswd())){
 					JOptionPane.showMessageDialog(this, "로그인 성공");
 					resultText.setText(memberService.login(member).toString());
@@ -189,7 +187,7 @@ public class MemberView extends JFrame implements ActionListener{
 					return;
 					}
 				
-			}
+			
 		}
 		
 	}

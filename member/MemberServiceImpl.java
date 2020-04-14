@@ -28,6 +28,7 @@ public class MemberServiceImpl implements MemberService {
 			if(member.getUserid().equals(members[i].getUserid()) 
 					&& member.getPasswd().equals(members[i].getPasswd())) {//fix 된 값이 왼쪽에 가야 퍼포먼스가 좋다.
 				result = members[i];
+				break; //매우 중요!!
 			}
 		}
 		return result;
