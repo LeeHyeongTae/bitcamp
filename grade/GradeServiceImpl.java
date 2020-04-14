@@ -34,12 +34,12 @@ public class GradeServiceImpl implements GradeService {
 	}
 	@Override
 	public int sumSubject(Grade grade) {
-		return grade.getKorean()+grade.getEnglish()+grade.getMath();
+		return grade.getKorean()+grade.getEnglish()+grade.getMath()+grade.getJava();
 				}
 	@Override
 	public int avgSubject(Grade grade) {
 		
-		return sumSubject(grade)/3;
+		return sumSubject(grade)/4;
 	}
 	@Override
 	public String record(Grade grade) {

@@ -4,12 +4,18 @@ package com.jse.algorithm;
 public class Gugudan {
 	
 	public static void main(String[] args) {
-		int[] gugudan;
-		for(int dan=2; dan<10; dan++) {
-			for(int i=1; i<10; i++) {		
-				System.out.println(dan+"*"+i+"="+dan*i);
+		for(int i =1; i<10; i++) {
+			for(int dan = 2; dan<6; dan++) {
+				System.out.print(dan+"x"+i+"="+dan*i+"\t");
+			}
+			System.out.println();
 		}
+		for(int i =1; i<10; i++) {
+			for(int dan = 6; dan<10; dan++) {
+				System.out.print(dan+"x"+i+"="+dan*i+"\t");
+			}
+			System.out.println();
 		}
+		
 	}
-	
 }
