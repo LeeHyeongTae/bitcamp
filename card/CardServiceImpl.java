@@ -7,27 +7,29 @@ public class CardServiceImpl implements CardService {
 		cards = new Card[3];
 		count = 0;
 	}
-	@Override
-	public Card[] getCards() {
-		return cards;
-	}
-	@Override
-	public void setCards(Card[] card) {
-		this.cards = card;
-	}
-	@Override
-	public int getCount() {
-		return count;
-	}
-	@Override
-	public void setCount(int count) {
-		this.count = count;
-	}
+
 	@Override
 	public void add(Card card) {
 		cards[count] = card;
 		count++;
 	}
+	
+	@Override
+	public Card[] list() {
+		return cards;
+	}
+	
+	@Override
+	public Card detail(Card card) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int count() {
+		return count;
+	}
+	
 	@Override
 	public String printCards() {
 		String result ="";
@@ -37,5 +39,18 @@ public class CardServiceImpl implements CardService {
 					cards[i].getNumber());
 		}
 		return result;
+	}
+
+
+	@Override
+	public void update(Card card) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(Card card) {
+		// TODO Auto-generated method stub
+		
 	}
 }

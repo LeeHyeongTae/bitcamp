@@ -162,7 +162,7 @@ public class MemberView extends JFrame implements ActionListener{
 				memberService.add(members[i]);
 			}
 		}else if(e.getSource() == listButton) {
-			Member[] members = memberService.getMemeber();
+			Member[] members = memberService.list();
 			String result = "";
 			for(int i=0;i< members.length; i++) {
 				result += (members[i]+"\n");
@@ -183,11 +183,10 @@ public class MemberView extends JFrame implements ActionListener{
 					resultText.setText(memberService.welcome(memberService.login(member).getName()));
 					}else {
 					JOptionPane.showMessageDialog(this, "로그인 실패");
-					}
-				
-			
+			}		
+	
 		}
 		
 	}
-
+	
 }

@@ -9,18 +9,22 @@ public class MemberServiceImpl implements MemberService {
 		members = new Member[5];
 	}
 	@Override
-	public void setMember(Member[] members) {
-		this.members = members;
-	}
-	@Override
-	public Member[] getMemeber() {
-		return members;
-	}
-	@Override
 	public void add(Member member) {
 		members[count] = member;
 		count++;
 	}
+
+	@Override
+	public Member[] list() {
+		return members;
+	}
+
+	@Override
+	public int count() {
+		// TODO Auto-generated method stub
+		return count;
+	}
+
 	@Override
 	public Member login(Member member) {//서치와 소팅
 		Member result = new Member();
@@ -37,6 +41,23 @@ public class MemberServiceImpl implements MemberService {
 	public String welcome(String name) {
 		String welcome = "안녕하세요, "+name+"님, 좋은 하루 되세요~";
 		return welcome;
+	}
+		
+	@Override
+	public void update(Member member) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(Member member) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public Member detail(Member member) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

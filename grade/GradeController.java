@@ -26,7 +26,7 @@ public class GradeController {
 				}
 						break;	
 				case "2":// 성적표 출력
-					JOptionPane.showMessageDialog(null, gradeService.printGrades());
+					JOptionPane.showMessageDialog(null, "");
 //					System.out.println(gradeService.printGrades());
 						break;
 					case "3":// 총점 높은 순 1,2,3등으로 이름 출력

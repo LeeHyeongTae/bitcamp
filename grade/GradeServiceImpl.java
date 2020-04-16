@@ -9,23 +9,34 @@ public class GradeServiceImpl implements GradeService {
 		count = 0;
 	}
 	@Override
-	public int getCount() {
+	public int count() {
 		return count;
 	}
-	@Override
-	public void setCount(int count) {
-		this.count = count;
-	}
 
 	@Override
-	public Grade[] getGrades() {
+	public Grade[] list() {
 		return grades;
 	}
+
 	@Override
-	public void setGrades(Grade[] grades) {
-		this.grades = grades;
+	public Grade detail(Grade grade) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
+	@Override
+	public String printGrades() {
+		String result ="";
+		for(int i=0; i<3; i++) {
+			result += String.format("[%s : 총점 %d 점, 평균 %d 점,학점 : %s]\n", 
+					grades[i].getName(), 
+					sumSubject(grades[i]), 
+					avgSubject(grades[i]), 
+					record(grades[i]));
+		}
+		return result;
+	}
+	
 	@Override
 	public void add(Grade grade) {
 		grades[count] = grade;
@@ -59,18 +70,6 @@ public class GradeServiceImpl implements GradeService {
 		return result;
 	}
 	@Override
-	public String printGrades() {
-		String result ="";
-		for(int i=0; i<3; i++) {
-		result += String.format("[%s : 총점 %d 점, 평균 %d 점,학점 : %s]\n", 
-				grades[i].getName(), 
-				sumSubject(grades[i]), 
-				avgSubject(grades[i]), 
-				record(grades[i]));
-		}
-		return result;
-	}
-	@Override
 	public String ranking() {
 //		if(grades[0].sumSubject()>grades[1].sumSubject()) {
 //			
@@ -97,6 +96,16 @@ public class GradeServiceImpl implements GradeService {
 		return null;
 
 	
+	}
+	@Override
+	public void update(Grade grade) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void delete(Grade grade) {
+		// TODO Auto-generated method stub
+		
 	}
 	}
 

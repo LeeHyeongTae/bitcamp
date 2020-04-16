@@ -22,7 +22,7 @@ public class PhoneController {
 					}
 					break;
 			
-			case "2": JOptionPane.showMessageDialog(null, phoneService.getPhones());
+			case "2": JOptionPane.showMessageDialog(null, phoneService.PhonesList());
 					break;
 //			case "3": 
 //					for(int i=0; i<3; i++) {
