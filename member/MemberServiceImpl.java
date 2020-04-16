@@ -18,10 +18,31 @@ public class MemberServiceImpl implements MemberService {
 	public Member[] list() {
 		return members;
 	}
+	@Override
+	public Member[] searchByName(String name) {
+		Member[] searchresult = new Member[5];
+		for(int i=0; i<this.members.length; ) {
+			if(name.equals(members[i].getName())) {
+				searchresult[i] = members[i];
+			}
+			break;
+		}
+		return searchresult;
+	}
+	@Override
+	public Member detail(String userid) {
+		Member member = null;
+		for(int i=0; i<members.length; i++) {
+			if(userid.equals(members[i].getUserid())) {
+				member = members[i];
+				break;
+			}
+		}
+		return member;
+	}
 
 	@Override
 	public int count() {
-		// TODO Auto-generated method stub
 		return count;
 	}
 
@@ -45,7 +66,11 @@ public class MemberServiceImpl implements MemberService {
 		
 	@Override
 	public void update(Member member) {
-		// TODO Auto-generated method stub
+		for(int i=0; i<members.length; i++) {
+			if(member.getUserid().equals(members[i].getUserid())) {
+				
+			}
+		}
 		
 	}
 
@@ -54,10 +79,6 @@ public class MemberServiceImpl implements MemberService {
 		// TODO Auto-generated method stub
 		
 	}
-	@Override
-	public Member detail(Member member) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 	
 }

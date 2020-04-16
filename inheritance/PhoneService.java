@@ -2,34 +2,28 @@ package com.jse.inheritance;
 
 public interface PhoneService {
 	public void add(Phone phone);
-	public void add(CellPhone cellphone);
-	public void add(Iphone iphone);
+	public void add(Iphone iphone); //편의성을 위해 파라미터에 의해서 오버로딩 허용
 	public void add(GalaxyNote galaxyNote);
 	
 	public int count();
-	public Phone[] PhonesList();
-	public CellPhone[] CellphonesList();
-	public Iphone[] IphoneList();
-	public GalaxyNote[] GalaxyNoteList();
+	public Phone[] phonesList();
+	public Iphone[] iphoneList();
+	public GalaxyNote[] galaxyNoteList();
 	
-	public Phone phonedetail(Phone phone);
-	public CellPhone cellphonedetail(CellPhone cellphone);
-	public Iphone iphonedetail(Iphone iphone);
-	public GalaxyNote galaxydetail(GalaxyNote galaxy);
+	public Phone detail(Phone phone);
+	public Iphone detail(Iphone iphone);
+	public GalaxyNote detail(GalaxyNote galaxy);
 	
 	public void phoneUpdate(Phone phone);
-	public void cellphoneUpdate(CellPhone cellphone);
 	public void iphoneUpdate(Iphone iphone);
 	public void galaxyUpdate(GalaxyNote galaxy);
 	
 	public void phoneDelete(Phone phone);
-	public void cellphoneDelete(CellPhone cellphone);
 	public void iphoneDelete(Iphone iphone);
 	public void galaxyDelete(GalaxyNote galaxy);
 	
 
 	public String printPhone();
-	public String printCellPhone();
 	public String printIPhone();
 	public String printGalaxyNote();
 }

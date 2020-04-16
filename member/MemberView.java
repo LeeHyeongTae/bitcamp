@@ -19,7 +19,8 @@ public class MemberView extends JFrame implements ActionListener{
     private JTextField nameText, useridText, passwordText, ssnText,
     					addrText; 
     private JTextArea resultText; 
-    private JButton submitButton, listButton, loginButton; 
+    private JButton submitButton, listButton, loginButton, detailButton, 
+    				nameButton, genderButton, countButton, updateButton, deleteButton; 
     public MemberService memberService;
     public void open(){ 
         memberService = new MemberServiceImpl();
@@ -101,23 +102,65 @@ public class MemberView extends JFrame implements ActionListener{
         submitButton = new JButton("Submit"); 
         submitButton.setFont(new Font("Arial", Font.PLAIN, 15)); 
         submitButton.setSize(100, 20); 
-        submitButton.setLocation(150, 450); 
+        submitButton.setLocation(100, 450); 
         submitButton.addActionListener(this);
         container.add(submitButton); 
-  
+        
         listButton = new JButton("List"); 
         listButton.setFont(new Font("Arial", Font.PLAIN, 15)); 
         listButton.setSize(100, 20); 
-        listButton.setLocation(270, 450); 
+        listButton.setLocation(220, 450); 
         listButton.addActionListener(this);
         container.add(listButton); 
         
         loginButton = new JButton("Log-In"); 
         loginButton.setFont(new Font("Arial", Font.PLAIN, 15)); 
         loginButton.setSize(100, 20); 
-        loginButton.setLocation(390, 450); 
+        loginButton.setLocation(340, 450); 
         loginButton.addActionListener(this);
-        container.add(loginButton); 
+        container.add(loginButton);
+        
+        detailButton = new JButton("Detail"); 
+        detailButton.setFont(new Font("Arial", Font.PLAIN, 15)); 
+        detailButton.setSize(100, 20); 
+        detailButton.setLocation(100, 470); 
+        detailButton.addActionListener(this);
+        container.add(detailButton); 
+        
+        countButton = new JButton("Count"); 
+        countButton.setFont(new Font("Arial", Font.PLAIN, 15)); 
+        countButton.setSize(100, 20); 
+        countButton.setLocation(100, 490); 
+        countButton.addActionListener(this);
+        container.add(countButton);
+        
+        nameButton = new JButton("Name"); 
+        nameButton.setFont(new Font("Arial", Font.PLAIN, 15)); 
+        nameButton.setSize(100, 20); 
+        nameButton.setLocation(220, 470); 
+        nameButton.addActionListener(this);
+        container.add(nameButton); 
+        
+        updateButton = new JButton("Update"); 
+        updateButton.setFont(new Font("Arial", Font.PLAIN, 15)); 
+        updateButton.setSize(100, 20); 
+        updateButton.setLocation(220, 490); 
+        updateButton.addActionListener(this);
+        container.add(updateButton); 
+         
+        genderButton = new JButton("Gender"); 
+        genderButton.setFont(new Font("Arial", Font.PLAIN, 15)); 
+        genderButton.setSize(100, 20); 
+        genderButton.setLocation(340, 470); 
+        genderButton.addActionListener(this);
+        container.add(genderButton); 
+       
+        deleteButton = new JButton("Delete"); 
+        deleteButton.setFont(new Font("Arial", Font.PLAIN, 15)); 
+        deleteButton.setSize(100, 20); 
+        deleteButton.setLocation(340, 490); 
+        deleteButton.addActionListener(this);
+        container.add(deleteButton); 
   
         resultText = new JTextArea(); 
         resultText.setFont(new Font("맑은고딕", Font.PLAIN, 15)); 
@@ -134,7 +177,7 @@ public class MemberView extends JFrame implements ActionListener{
 		
 		if(e.getSource() == submitButton) {
 			JOptionPane.showMessageDialog(this, "test");
-			nameText.setText("홍길동,유관순,이순신,신사임당,이도");
+			nameText.setText("홍길동,홍길동,이순신,신사임당,이도");
 			useridText.setText("hong,you,lee,shin,leedo");
 			passwordText.setText("1,1,1,1,1");
 			ssnText.setText("900101-1,960101-2,980101-1,011010-4,020606-3");
@@ -151,15 +194,15 @@ public class MemberView extends JFrame implements ActionListener{
 			String[] passwords = arr[2].split(",");
 			String[] ssns = arr[3].split(",");
 			String[] addrs = arr[4].split(",");
-			Member[] members = new Member[5];
-			for(int i=0;i< 5; i++) {
-				members[i] = new Member(); 
-				members[i].setName(names[i]);
-				members[i].setUserid(userids[i]);
-				members[i].setPasswd(passwords[i]);
-				members[i].setSsn(ssns[i]);
-				members[i].setAddr(addrs[i]);
-				memberService.add(members[i]);
+			Member member = null;
+			for(int i=0;i< names.length; i++) {
+				member = new Member(); 
+				member.setName(names[i]);
+				member.setUserid(userids[i]);
+				member.setPasswd(passwords[i]);
+				member.setSsn(ssns[i]);
+				member.setAddr(addrs[i]);
+				memberService.add(member);
 			}
 		}else if(e.getSource() == listButton) {
 			Member[] members = memberService.list();
@@ -180,12 +223,30 @@ public class MemberView extends JFrame implements ActionListener{
 			member.setPasswd(passwordText.getText());
 				if(member.getPasswd().equals(memberService.login(member).getPasswd())){
 					JOptionPane.showMessageDialog(this, "로그인 성공");
-					resultText.setText(memberService.welcome(memberService.login(member).getName()));
+					resultText.setText(memberService.login(member)
+							+memberService.welcome(memberService.login(member).getName()));
 					}else {
 					JOptionPane.showMessageDialog(this, "로그인 실패");
 			}		
 	
+		}else if(e.getSource()==detailButton) {	
+			if(useridText.getText().equals(memberService.detail(useridText.getText()).getUserid())) {
+				resultText.setText(memberService.detail(useridText.getText()).toString());				
+			}else {
+				resultText.setText("해당 아이디가 없습니다.");
+			}
+		}else if(e.getSource()==nameButton) {
+			Member[] seachmembers = memberService.searchByName(nameText.getText());
+			String searchResult = "";
+			for(int i=0; i<5; i++) {
+				searchResult += seachmembers[i];
+			}
+			resultText.setText(searchResult);
+			JOptionPane.showMessageDialog(this, "해당 이름이 없습니다.");
+		}else {
+			
 		}
+		
 		
 	}
 	

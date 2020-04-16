@@ -14,15 +14,10 @@ public class PhoneServiceImpl implements PhoneService{
 		galaxyNote = new GalaxyNote[3];
 		count = 0;
 	}
-	
+		
 	@Override
 	public void add(Phone phone) {
-		phones[count] = phone;
-		count++;
-	}
-	@Override
-	public void add(CellPhone cellphone) {
-		cellphones[count] = cellphone;
+		this.phones[count] = phone;
 		count++;
 	}
 	@Override
@@ -42,48 +37,22 @@ public class PhoneServiceImpl implements PhoneService{
 	}
 
 	@Override
-	public Phone[] PhonesList() {
+	public Phone[] phonesList() {
 		return phones;
 	}
 
-	@Override
-	public CellPhone[] CellphonesList() {
-		return cellphones;
-	}
 
 	@Override
-	public Iphone[] IphoneList() {
+	public Iphone[] iphoneList() {
 		return iphone;
 	}
 	
 	@Override
-	public GalaxyNote[] GalaxyNoteList() {
+	public GalaxyNote[] galaxyNoteList() {
 		return galaxyNote;
 	}
 
-	@Override
-	public Phone phonedetail(Phone phone) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	@Override
-	public CellPhone cellphonedetail(CellPhone cellphone) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	@Override
-	public Iphone iphonedetail(Iphone iphone) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	@Override
-	public GalaxyNote galaxydetail(GalaxyNote galaxy) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 	
 	@Override
 	public void phoneUpdate(Phone phone) {
@@ -91,11 +60,6 @@ public class PhoneServiceImpl implements PhoneService{
 		
 	}
 	
-	@Override
-	public void cellphoneUpdate(CellPhone cellphone) {
-		// TODO Auto-generated method stub
-		
-	}
 	
 	@Override
 	public void iphoneUpdate(Iphone iphone) {
@@ -115,11 +79,6 @@ public class PhoneServiceImpl implements PhoneService{
 		
 	}
 	
-	@Override
-	public void cellphoneDelete(CellPhone cellphone) {
-		// TODO Auto-generated method stub
-		
-	}
 	
 	@Override
 	public void iphoneDelete(Iphone iphone) {
@@ -140,11 +99,7 @@ public class PhoneServiceImpl implements PhoneService{
 		}
 		return message;
 	}
-	@Override
-	public String printCellPhone() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 	@Override
 	public String printIPhone() {
 		// TODO Auto-generated method stub
@@ -152,6 +107,25 @@ public class PhoneServiceImpl implements PhoneService{
 	}
 	@Override
 	public String printGalaxyNote() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public Phone detail(Phone phone) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Iphone detail(Iphone iphone) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public GalaxyNote detail(GalaxyNote galaxy) {
 		// TODO Auto-generated method stub
 		return null;
 	}
