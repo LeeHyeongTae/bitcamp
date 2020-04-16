@@ -5,6 +5,7 @@ import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 import com.jse.member.Kaup;
+import com.jse.member.Member;
 import com.jse.util.Calculator;
 import com.jse.util.Constants;
 
@@ -29,14 +30,14 @@ public class GameController {
 			case "1": 
 					System.out.println("회원가입");
 					System.out.println("ID 입력");
-					member.setId(scanner.next());
+					member.setUserid(scanner.next());
 					break;
 					
 			case "2": 
 					System.out.println("로그인");
 					System.out.println("ID 입력");
-					System.out.println("로그인된 아이디 " + member.getId());
-					if(scanner.next().equals(member.getId())) {
+					System.out.println("로그인된 아이디 " + member.getUserid());
+					if(scanner.next().equals(member.getUserid())) {
 						System.out.println("로그인 성공");
 					}else {
 						System.out.println("로그인 실패");
