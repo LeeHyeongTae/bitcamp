@@ -248,9 +248,36 @@ public class MemberView extends JFrame implements ActionListener{
 				JOptionPane.showMessageDialog(this, "일치하는 이름이 없습니다.");
 			}
 			
+			}else if(e.getSource()==genderButton){
+				Member[] genderCheckedMember = 
+						memberService.searchByGender(Integer.parseInt(ssnText.getText()));
+				String checkResult = "";
+				if(memberService.count(Integer.parseInt(ssnText.getText()))!=0) {
+					for(int i=0; i<genderCheckedMember.length; i++) {
+						checkResult += genderCheckedMember[i]+"\n";
+					}
+					checkResult += 
+							"주민번호가 ("+ssnText+")인 사람의 수: "
+							+memberService.count(Integer.parseInt(ssnText.getText()));
+					resultText.setText(checkResult);
+				}else {
+					JOptionPane.showMessageDialog(this, "일치하는 성별이 없습니다.");
+				}
+			}else if(e.getSource()==countButton){
+				memberService.count();
+			}else if(e.getSource()==updateButton){
+				Member updatemember = new Member();
+				updatemember.setUserid(useridText.getText());
+				updatemember.setPasswd(passwordText.getText());
+				memberService.update(updatemember);
+			}else if(e.getSource()==deleteButton){
+				Member deletemember = new Member();
+				deletemember.setUserid(useridText.getText());
+				deletemember.setPasswd(passwordText.getText());
+				memberService.delete(deletemember);
 			}
 		}
-		
 	}
+	
 	
 

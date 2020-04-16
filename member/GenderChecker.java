@@ -12,9 +12,6 @@ public class GenderChecker {
 		String ssn = scanner.next();
 		System.out.println(ssn);
 		char ch = ssn.charAt(7);
-		//String a = "";
-		//char c = '';
-		//case '1'
 		String result = "잘못입력한 값";
 		switch(ch) {
 		case '1': case '3': result = "남성"; break;

@@ -38,6 +38,27 @@ public class MemberServiceImpl implements MemberService {
 		}
 		return searchresult;
 	}
+	
+	@Override
+	public Member[] searchByGender(int ssn) {
+		Member[] genderCheck = null;
+		int searchCount = count(ssn);
+		if(searchCount!=0) {
+			genderCheck = new Member[count(ssn)];
+		int j=0;
+		for(int i=0; i<count; i++) {
+		if(ssn == members[i].getSsn().charAt(7)) {
+			genderCheck[j] = members[i];
+			j++;
+			if(searchCount==j) {
+				break;
+			}
+				}
+			}
+		}
+		return genderCheck;
+	}
+	
 	@Override
 	public Member detail(String userid) {
 		Member member = null;
@@ -64,6 +85,17 @@ public class MemberServiceImpl implements MemberService {
 			}
 		}
 		
+		return count;
+	}
+
+	@Override
+	public int count(int ssn) {
+		int count =0;
+		for(int i=0; i<count; i++) {
+			if(ssn == members[i].getSsn().charAt(7)) {
+				count++;
+			}
+		}
 		return count;
 	}
 
@@ -112,6 +144,5 @@ public class MemberServiceImpl implements MemberService {
 		}
 		
 	}
-	
-	
+		
 }
