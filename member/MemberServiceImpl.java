@@ -52,7 +52,7 @@ public class MemberServiceImpl implements MemberService {
 			j++;
 			if(searchCount==j) {
 				break;
-			}
+					}
 				}
 			}
 		}

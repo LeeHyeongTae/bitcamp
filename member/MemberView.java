@@ -223,6 +223,8 @@ public class MemberView extends JFrame implements ActionListener{
 			member.setPasswd(passwordText.getText());
 				if(member.getPasswd().equals(memberService.login(member).getPasswd())){
 					JOptionPane.showMessageDialog(this, "로그인 성공");
+					useridText.setText("");
+					passwordText.setText("");
 					resultText.setText(memberService.login(member)
 							+memberService.welcome(memberService.login(member).getName()));
 					}else {
@@ -257,24 +259,39 @@ public class MemberView extends JFrame implements ActionListener{
 						checkResult += genderCheckedMember[i]+"\n";
 					}
 					checkResult += 
-							"주민번호가 ("+ssnText+")인 사람의 수: "
+							"주민번호뒷자리가 ("+ssnText+")인 사람의 수: "
 							+memberService.count(Integer.parseInt(ssnText.getText()));
 					resultText.setText(checkResult);
 				}else {
 					JOptionPane.showMessageDialog(this, "일치하는 성별이 없습니다.");
 				}
 			}else if(e.getSource()==countButton){
-				memberService.count();
+				String result = "회원수:"+memberService.count();
+				resultText.setText(result);
+				
 			}else if(e.getSource()==updateButton){
 				Member updatemember = new Member();
+				updatemember.setName(nameText.getText());
 				updatemember.setUserid(useridText.getText());
 				updatemember.setPasswd(passwordText.getText());
 				memberService.update(updatemember);
+				String updatedmembers = "";
+				for(int i=0; i<memberService.count(); i++) {
+					updatedmembers += memberService.list()[i]+"\n";
+				}
+				updatedmembers += "\n 현재 멤버 수:"+memberService.count();
+				resultText.setText(updatedmembers);
 			}else if(e.getSource()==deleteButton){
 				Member deletemember = new Member();
 				deletemember.setUserid(useridText.getText());
 				deletemember.setPasswd(passwordText.getText());
 				memberService.delete(deletemember);
+				String deletedmembers = "";
+				for(int i=0; i<memberService.count(); i++) {
+					deletedmembers += memberService.list()[i]+"\n";
+				}
+				deletedmembers += "\n 현재 멤버 수:"+memberService.count();
+				resultText.setText(deletedmembers);
 			}
 		}
 	}
