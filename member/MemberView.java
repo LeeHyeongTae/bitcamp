@@ -238,16 +238,19 @@ public class MemberView extends JFrame implements ActionListener{
 		}else if(e.getSource()==nameButton) {
 			Member[] seachmembers = memberService.searchByName(nameText.getText());
 			String searchResult = "";
-			for(int i=0; i<5; i++) {
-				searchResult += seachmembers[i];
+			if(memberService.count(nameText.getText())!=0) {
+				for(int i=0; i<seachmembers.length; i++) {
+					searchResult += seachmembers[i]+"\n";
+				}
+				resultText.setText(searchResult);				
+			}else {
+				resultText.setText("");
+				JOptionPane.showMessageDialog(this, "일치하는 이름이 없습니다.");
 			}
-			resultText.setText(searchResult);
-			JOptionPane.showMessageDialog(this, "해당 이름이 없습니다.");
-		}else {
 			
+			}
 		}
-		
 		
 	}
 	
-}
+

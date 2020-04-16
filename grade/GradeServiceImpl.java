@@ -20,8 +20,14 @@ public class GradeServiceImpl implements GradeService {
 
 	@Override
 	public Grade detail(Grade grade) {
-		// TODO Auto-generated method stub
-		return null;
+		Grade detailgrade = null;
+		for(int i=0; i<grades.length; i++) {
+			if(grade.getName().equals(grades[i].getName())) {
+				
+			}
+		}
+		
+		return detailgrade;
 	}
 
 	@Override

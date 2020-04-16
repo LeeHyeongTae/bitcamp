@@ -7,7 +7,7 @@ public interface MemberService {
 		public Member[] searchByName(String keyword);
 		public Member detail(String userid);
 		public int count();
-		
+		public int count(String name);
 		public Member login(Member member);
 
 		public void update(Member member);

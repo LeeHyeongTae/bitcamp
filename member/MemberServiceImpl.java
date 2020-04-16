@@ -7,6 +7,7 @@ public class MemberServiceImpl implements MemberService {
 	private int count;
 	public MemberServiceImpl() {
 		members = new Member[5];
+		count = 0;
 	}
 	@Override
 	public void add(Member member) {
@@ -20,19 +21,27 @@ public class MemberServiceImpl implements MemberService {
 	}
 	@Override
 	public Member[] searchByName(String name) {
-		Member[] searchresult = new Member[5];
-		for(int i=0; i<this.members.length; ) {
-			if(name.equals(members[i].getName())) {
-				searchresult[i] = members[i];
+		Member[] searchresult = null;
+		int searchCount = count(name);
+		if(searchCount!=0) {
+			searchresult = new Member[count(name)];
+			int j=0;
+			for(int i=0; i<this.count; i++) {
+				if(name.equals(members[i].getName())) {
+						searchresult[j] = members[i];
+						j++;
+						if(searchCount==j) {
+							break;
+						}
+				}
 			}
-			break;
 		}
 		return searchresult;
 	}
 	@Override
 	public Member detail(String userid) {
 		Member member = null;
-		for(int i=0; i<members.length; i++) {
+		for(int i=0; i<count; i++) {
 			if(userid.equals(members[i].getUserid())) {
 				member = members[i];
 				break;
@@ -47,9 +56,21 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
+	public int count(String name) {
+		int count = 0;
+		for(int i=0; i<count; i++) {
+			if(name.equals(members[i].getName())) {
+				count++;
+			}
+		}
+		
+		return count;
+	}
+
+	@Override
 	public Member login(Member member) {//서치와 소팅
 		Member result = new Member();
-		for(int i=0; i<members.length; i++) {
+		for(int i=0; i<count; i++) {
 			if(member.getUserid().equals(members[i].getUserid()) 
 					&& member.getPasswd().equals(members[i].getPasswd())) {//fix 된 값이 왼쪽에 가야 퍼포먼스가 좋다.
 				result = members[i];
@@ -66,9 +87,11 @@ public class MemberServiceImpl implements MemberService {
 		
 	@Override
 	public void update(Member member) {
-		for(int i=0; i<members.length; i++) {
-			if(member.getUserid().equals(members[i].getUserid())) {
-				
+		for(int i=0; i<count; i++) {
+			if(member.getUserid().equals(members[i].getUserid()) &&
+					member.getPasswd().equals(members[i].getPasswd())) {
+				members[i] = member;
+				break;
 			}
 		}
 		
@@ -76,7 +99,17 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public void delete(Member member) {
-		// TODO Auto-generated method stub
+		for(int i=0; i<count; i++) {
+			if(member.getUserid().equals(members[i].getUserid()) &&
+					member.getPasswd().equals(members[i].getPasswd())) {
+				if(i!=count-1) {
+					members[i] = members[count-1];
+					members[count-1] = null;
+					count--;
+				}
+				break;
+			}
+		}
 		
 	}
 	
