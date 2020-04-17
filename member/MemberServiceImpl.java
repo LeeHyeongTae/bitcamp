@@ -1,10 +1,10 @@
 package com.jse.member;
 
 
-public class MemberServiceImpl implements MemberService {
-	//필드에서 선언하고 메서드에서 생성해야 한다.
+public class MemberServiceImpl implements MemberService{
 	private Member[] members;
 	private int count;
+
 	public MemberServiceImpl() {
 		members = new Member[5];
 		count = 0;
@@ -13,55 +13,43 @@ public class MemberServiceImpl implements MemberService {
 	public void add(Member member) {
 		members[count] = member;
 		count++;
+		
 	}
 
 	@Override
 	public Member[] list() {
+		
 		return members;
 	}
+
 	@Override
-	public Member[] searchByName(String name) {
-		Member[] searchresult = null;
-		int searchCount = count(name);
-		if(searchCount!=0) {
-			searchresult = new Member[count(name)];
-			int j=0;
-			for(int i=0; i<this.count; i++) {
-				if(name.equals(members[i].getName())) {
-						searchresult[j] = members[i];
-						j++;
-						if(searchCount==j) {
-							break;
-						}
+	public Member[] searchByName(String keyword) {
+		Member[] nameMembers = new Member[count(keyword)];
+		int j = 0;
+		for(int i=0; i<count; i++) {
+			if(count(keyword)!=0) {	
+			if(keyword.equals(members[i].getName())) {
+				nameMembers[j] = members[i];
+				j++;
+				}
+			if(count(keyword)==j) {
+				break;
 				}
 			}
 		}
-		return searchresult;
+		return nameMembers;
 	}
-	
+
 	@Override
 	public Member[] searchByGender(int ssn) {
-		Member[] genderCheck = null;
-		int searchCount = count(ssn);
-		if(searchCount!=0) {
-			genderCheck = new Member[count(ssn)];
-		int j=0;
-		for(int i=0; i<count; i++) {
-		if(ssn == members[i].getSsn().charAt(7)) {
-			genderCheck[j] = members[i];
-			j++;
-			if(searchCount==j) {
-				break;
-					}
-				}
-			}
-		}
-		return genderCheck;
+		Member[] genderMembers = null;
+		
+		return genderMembers;
 	}
-	
+
 	@Override
 	public Member detail(String userid) {
-		Member member = null;
+		Member member = new Member();
 		for(int i=0; i<count; i++) {
 			if(userid.equals(members[i].getUserid())) {
 				member = members[i];
@@ -73,57 +61,47 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public int count() {
+		
 		return count;
 	}
 
 	@Override
 	public int count(String name) {
-		int count = 0;
+		int namecount =0;
 		for(int i=0; i<count; i++) {
 			if(name.equals(members[i].getName())) {
-				count++;
+				namecount++;
 			}
 		}
-		
-		return count;
+		return namecount;
 	}
 
 	@Override
-	public int count(int ssn) {
-		int count =0;
-		for(int i=0; i<count; i++) {
-			if(ssn == members[i].getSsn().charAt(7)) {
-				count++;
-			}
-		}
-		return count;
+	public int ssnCount(String gender) {
+		int gendercount = 0;
+		
+		return gendercount;
 	}
 
 	@Override
-	public Member login(Member member) {//서치와 소팅
-		Member result = new Member();
-		for(int i=0; i<count; i++) {
-			if(member.getUserid().equals(members[i].getUserid()) 
-					&& member.getPasswd().equals(members[i].getPasswd())) {//fix 된 값이 왼쪽에 가야 퍼포먼스가 좋다.
-				result = members[i];
-				break; //매우 중요!!
-			}
-		}
-		return result;
-	}
-	@Override
-	public String welcome(String name) {
-		String welcome = "안녕하세요, "+name+"님, 좋은 하루 되세요~";
-		return welcome;
-	}
-		
-	@Override
-	public void update(Member member) {
+	public Member login(Member member) {
+		Member loginmember = null;
 		for(int i=0; i<count; i++) {
 			if(member.getUserid().equals(members[i].getUserid()) &&
 					member.getPasswd().equals(members[i].getPasswd())) {
-				members[i] = member;
+				loginmember = members[i];
 				break;
+			}
+		}
+		
+		return loginmember;
+	}
+
+	@Override
+	public void update(Member member) {
+		for(int i=0; i<count; i++) {
+			if(member.getUserid().equals(members[i].getUserid())) {
+				members[i] = member;
 			}
 		}
 		
@@ -134,15 +112,11 @@ public class MemberServiceImpl implements MemberService {
 		for(int i=0; i<count; i++) {
 			if(member.getUserid().equals(members[i].getUserid()) &&
 					member.getPasswd().equals(members[i].getPasswd())) {
-				if(i!=count-1) {
-					members[i] = members[count-1];
-					members[count-1] = null;
-					count--;
-				}
+				members[i] = members[count-1];
+				members[count-1] = null;
+				count--;
 				break;
 			}
 		}
-		
 	}
-		
 }

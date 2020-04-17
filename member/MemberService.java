@@ -9,12 +9,11 @@ public interface MemberService {
 		public Member detail(String userid);
 		public int count();
 		public int count(String name);
-		public int count(int ssn);
+		public int ssnCount(String gender);
 		public Member login(Member member);
 
 		public void update(Member member);
 		public void delete(Member member);
-		public String welcome(String name);
 	}
 
 

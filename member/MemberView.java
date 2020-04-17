@@ -207,7 +207,7 @@ public class MemberView extends JFrame implements ActionListener{
 		}else if(e.getSource() == listButton) {
 			Member[] members = memberService.list();
 			String result = "";
-			for(int i=0;i< members.length; i++) {
+			for(int i=0;i< memberService.count(); i++) {
 				result += (members[i]+"\n");
 			}
 			nameText.setText("");
@@ -225,8 +225,8 @@ public class MemberView extends JFrame implements ActionListener{
 					JOptionPane.showMessageDialog(this, "로그인 성공");
 					useridText.setText("");
 					passwordText.setText("");
-					resultText.setText(memberService.login(member)
-							+memberService.welcome(memberService.login(member).getName()));
+					resultText.setText(memberService.login(member)+"\n"
+							+memberService.login(member).getName()+"님 안녕하세요.");
 					}else {
 					JOptionPane.showMessageDialog(this, "로그인 실패");
 			}		
@@ -241,7 +241,7 @@ public class MemberView extends JFrame implements ActionListener{
 			Member[] seachmembers = memberService.searchByName(nameText.getText());
 			String searchResult = "";
 			if(memberService.count(nameText.getText())!=0) {
-				for(int i=0; i<seachmembers.length; i++) {
+				for(int i=0; i<memberService.count(nameText.getText()); i++) {
 					searchResult += seachmembers[i]+"\n";
 				}
 				resultText.setText(searchResult);				
@@ -251,27 +251,29 @@ public class MemberView extends JFrame implements ActionListener{
 			}
 			
 			}else if(e.getSource()==genderButton){
-				Member[] genderCheckedMember = 
-						memberService.searchByGender(Integer.parseInt(ssnText.getText()));
-				String checkResult = "";
-				if(memberService.count(Integer.parseInt(ssnText.getText()))!=0) {
+//				int a = memberService.list()[0].getSsn().charAt(7);
+//				Member[] genderCheckedMember = 
+//						memberService.searchByGender(Integer.parseInt(ssnText.getText()));
+//				String checkResult = "";
+				/*
+				if(memberService.ssnCount(Integer.parseInt(ssnText.getText()))!=0) {
 					for(int i=0; i<genderCheckedMember.length; i++) {
 						checkResult += genderCheckedMember[i]+"\n";
 					}
 					checkResult += 
 							"주민번호뒷자리가 ("+ssnText+")인 사람의 수: "
-							+memberService.count(Integer.parseInt(ssnText.getText()));
+							+memberService.ssnCount(Integer.parseInt(ssnText.getText()));
 					resultText.setText(checkResult);
 				}else {
 					JOptionPane.showMessageDialog(this, "일치하는 성별이 없습니다.");
 				}
+				*/
 			}else if(e.getSource()==countButton){
 				String result = "회원수:"+memberService.count();
 				resultText.setText(result);
 				
 			}else if(e.getSource()==updateButton){
 				Member updatemember = new Member();
-				updatemember.setName(nameText.getText());
 				updatemember.setUserid(useridText.getText());
 				updatemember.setPasswd(passwordText.getText());
 				memberService.update(updatemember);
